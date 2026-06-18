@@ -14,11 +14,11 @@ services:
     # Necessary for it to function properly
     network_mode: host
     environment:
-      - TZ=America/New_York
+      - TZ=Europe/Lisbon
       - PUID=1026
       - PGID=100
-      - CUPSADMIN=admin
-      - CUPSPASSWORD=password
+      - CUPSADMIN=${CUPSADMIN}
+      - CUPSPASSWORD=${CUPSPASSWORD}
     restart: unless-stopped
 
     # Access the configuration page at
