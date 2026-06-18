@@ -1,15 +1,25 @@
-version: '3.5'
+version: "3"
 
 services:
-  cups:
-    container_name: cups
-    image: chuckcharlie/cups-avahi-airprint
-    #build: .
-    restart: always
-    network_mode: "host"
-    environment:
-      CUPSADMIN: cups
-      CUPSPASSWORD: cups
-      # TZ: Europe/Vienna  # optional, defaults to UTC
+
+  # Container #1: Air Print Server
+  airprint:
+    image: chuckcharlie/cups-avahi-airprint:latest
+    container_name: AirPrint
     volumes:
-      - "./config:/config"
+      # To store configurations
+      # In the NAS | In the container
+      - /volume1/docker/AirPrint/config:/config
+      - /volume1/docker/AirPrint/services:/services
+    # Necessary for it to function properly
+    network_mode: host
+    environment:
+      - TZ=America/New_York
+      - PUID=1026
+      - PGID=100
+      - CUPSADMIN=admin
+      - CUPSPASSWORD=password
+    restart: unless-stopped
+
+    # Access the configuration page at
+    # http://<NAS IP>:631
