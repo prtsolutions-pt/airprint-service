@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   # Container #1: Air Print Server
   airprint:
     image: chuckcharlie/cups-avahi-airprint:latest
