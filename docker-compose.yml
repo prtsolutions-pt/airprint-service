@@ -20,5 +20,5 @@ services:
       - CUPSPASSWORD=${CUPSPASSWORD}
     restart: unless-stopped
 
-    # Access the configuration page at
+    # Access the configuration page at url
     # http://<NAS IP>:631
